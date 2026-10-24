@@ -11,7 +11,7 @@
         a3to31 2.6s steps(1) 5.5s forwards,
         a31to4 2.15s steps(1) 8.1s forwards,
         a4to5 9.6s steps(1) 10.25s forwards,
-        a5to6 9.6s steps(1) 19.7s forwards;
+        a5to6 9.7s steps(1) 19.7s forwards;
 }
 @keyframes a1to2{
     from{background-image:url(part1/1-1.png);}
