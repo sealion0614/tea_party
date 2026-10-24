@@ -1,0 +1,39 @@
+.play{
+    width:30vw;
+    aspect-ratio: 4/3;
+    background-image:url(part1/1-1.png);
+    background-size: contain;
+    background-repeat:no-repeat;
+    border:5px solid;
+    animation:
+        a1to2 2.9s steps(1) forwards,
+        a2to3 2.6s steps(1) 2.9s forwards,
+        a3to31 2.6s steps(1) 5.5s forwards,
+        a31to4 2.15s steps(1) 8.1s forwards,
+        a4to5 9.6s steps(1) 10.25s forwards,
+        a5to6 9.6s steps(1) 19.7s forwards;
+}
+@keyframes a1to2{
+    from{background-image:url(part1/1-1.png);}
+    to{background-image:url(part1/1-2.png);}
+}
+@keyframes a2to3{
+    from{background-image:url(part1/1-2.png);}
+    to{background-image:url(part1/1-3.png);}
+}
+@keyframes a3to31{
+    from{background-image:url(part1/1-3.png);}
+    to{background-image:none;}
+}
+@keyframes a31to4{
+    from{background-image:none;}
+    to{background-image:url(part1/1-4.png);}
+}
+@keyframes a4to5{
+    from{background-image:url(part1/1-4.png);}
+    to{background-image:url(part1/1-5.png);}
+}
+@keyframes a5to6{
+    from{background-image:url(part1/1-5.png);}
+    to{background-image:url(part1/1-6.png);}
+}
