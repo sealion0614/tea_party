@@ -31,7 +31,7 @@ const images=[
     { t: 67.744, src: "part1/3-6.png" },
     { t: 77.301, src: "part1/3-7.png" },
     { t: 81.557, src: "part1/3-8.png" },
-    { t: 83.310, src: "part1/3-9.png" },
+    { t: 83, src: "part1/3-9.png" },
 ];
 const sources=images.map(i=>i.src).filter(Boolean);
 const preloaded=[];
@@ -51,15 +51,24 @@ const effects=[
     {
         start:34.072,duration:37.965-34.072,hold:false,
         keyframes:[
-            {transform:"translate(0,0) scale(1,1)"},
-            {transform:"translate(-30%,0) scale(2,2)"}
+            {transform:"translate(0,0) scale(1,1)",easing:"ease"},
+            {transform:"translate(-30%,0) scale(2,2)",easing:"ease"}
         ]
     },
     {
         start:38.901,duration:42-38.901,hold:true,
         keyframes:[
-            {transform:"scale(2,2)"},
-            {transform:"scale(1,1)"}
+            {transform:"scale(2,2)",easing:"ease"},
+            {transform:"scale(1,1)",easing:"ease"}
+        ]
+    },
+    {
+        start:67.744,duration:5,hold:true,
+        keyframes:[
+            {transform:"scale(1,1) translate(0,0)",easing:"ease"},
+            {transform:"scale(2,2) translate(20%,-20%)",easing:"ease"},
+            {transform:"scale(2,2) translate(-20%,10%)",easing:"ease"},
+            {transform:"scale(1,1) translate(0,0)",easing:"ease"},
         ]
     },
     {
@@ -67,9 +76,18 @@ const effects=[
         keyframes:[
             {transform:"rotate(0) scale(1,1)"},
             {transform:"rotate(90deg) scale(3,3)"},
-            {transform:"rotate(180deg) scale(1,1)"}
+            {transform:"rotate(180deg) scale(1,1)"},
         ]
-    }
+    },
+    {
+        start:72.596,duration:77.301-72.596,hold:true,
+        keyframes:[
+            {transform:"rotate(180deg) scale(1,1) translate(0,0)",easing:"ease"},
+            {transform:"rotate(180deg) scale(3,3) translate(0,-20%)",easing:"ease"},
+            {transform:"rotate(180deg) scale(3,3) translate(-10%,-30%)",easing:"ease"},
+            {transform:"rotate(180deg) scale(1,1) translate(0,0)",easing:"ease"},
+        ]
+    },
 ];
 effects.forEach(e=>{
     if(e.hold){
@@ -84,7 +102,7 @@ const anm=effects.map(e=>{
     const a=player.animate(e.keyframes,{
         duration:e.duration*1000,
         fill:e.hold?"forwards":"none",
-        easing:"ease"
+        easing:"linear",
     });
     a.pause();
     return a;
@@ -124,9 +142,15 @@ function loop(){
     if(!audio.paused) requestAnimationFrame(loop);
 }
 
-audio.addEventListener("play",()=>requestAnimationFrame(loop));
+audio.addEventListener("play",()=>{
+    requestAnimationFrame(loop);
+    requestAnimationFrame(loopTitle);
+});
 
-["seeking","seeked","pause","ratechange","timeupdate","ended"].forEach(ev=>audio.addEventListener(ev,render));
+["seeking","seeked","pause","ratechange","timeupdate","ended"].forEach(ev=>audio.addEventListener(ev,()=>{
+    render();
+    renderTitle();
+}));
 
 render();
 

@@ -1,0 +1,85 @@
+let subTitle=document.getElementById("sub-title");
+const subTitleUpdateSettings=[];
+createSubTitle=(st,et,cont,style)=>{
+    const str=document.createElement("div");
+    subTitle.appendChild(str);
+    str.style.position="absolute";
+    str.innerHTML=cont;
+    str.classList.add("hid");
+    Object.assign(str.style,style);
+    subTitleUpdateSettings.push({st,et,str});
+}
+updateSubTitle=()=>{
+    subTitleUpdateSettings.forEach(s=>{
+        if(s.st<audio.currentTime&&s.et>audio.currentTime){
+        s.str.classList.remove("hid");
+    }
+    else{
+        s.str.classList.add("hid");
+    }
+    })
+}
+renderTitle=()=>{
+    updateSubTitle();
+}
+loopTitle=()=>{
+    renderTitle();
+    if(!audio.paused){
+        requestAnimationFrame(loopTitle);
+    }
+}
+createSubTitle(10.072,19.7,`と<br>あ<br>る`,{
+    fontSize:"80px",
+    top:"15%",
+    left:"30%",
+    color:"oklch(0.8682 0.076 157.98)"
+});
+createSubTitle(10.072,19.7,`一<br>家<br>の`,{
+    fontSize:"80px",
+    top:"20%",
+    left:"20%",
+    color:"oklch(0.8682 0.076 157.98)"
+});
+createSubTitle(10.072,19.7,`御<br>茶<br>会<br>議`,{
+    fontSize:"80px",
+    top:"25%",
+    left:"10%",
+    color:"oklch(0.8682 0.076 157.98)"
+});
+createSubTitle(29.273,32.986,`ぱっと深く深い奇妙で苦い夢から覚める`,{
+    fontSize:"30px",
+    top:"90%",
+    left:"0",
+    color:"black"
+});
+createSubTitle(34.080,38.330,`頬を伝う汗、気分が良いとはとても言えないな`,{
+    fontSize:"30px",
+    top:"90%",
+    left:"0",
+    color:"black"
+});
+createSubTitle(38.330,38.948,`ずっと`,{
+    fontSize:"80px",
+    top:"50%",
+    left:"50%",
+    transform:"translate(-50%,-50%)",
+    color:"black"
+});
+createSubTitle(38.948,41.281,`ウィリアムとジョセフが創りあげた`,{
+    fontSize:"30px",
+    top:"90%",
+    left:"0",
+    color:"black"
+});
+createSubTitle(41.281,43.743,`名作が`,{
+    fontSize:"30px",
+    top:"90%",
+    left:"0",
+    color:"black"
+});
+createSubTitle(43.743,50,`頭の中エンドレスループ再生`,{
+    fontSize:"30px",
+    top:"90%",
+    left:"0",
+    color:"black"
+});
