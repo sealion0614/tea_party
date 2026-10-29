@@ -30,8 +30,21 @@ const images=[
     { t: 66.686, src: "" },
     { t: 67.744, src: "part1/3-6.png" },
     { t: 77.301, src: "part1/3-7.png" },
-    { t: 81.557, src: "part1/3-8.png" },
-    { t: 83, src: "part1/3-9.png" },
+    { t: 80.607, src: "part1/3-8.png" },
+    { t: 81.513, src: "part1/3-9.png" },
+    { t: 86.916, src: "part1-2/4-1.png" },
+    { t: 89.273, src: "part1-2/4-2.png" },
+    { t: 91.692, src: "part1-2/4-3.png" },
+    { t: 92.304, src: "part1-2/4-4.png" },
+    { t: 92.911, src: "part1-2/4-5.png" },
+    { t: 94.023, src: "part1-2/4-6.png" },
+    { t: 96.485, src: "part1-2/4-7.png" },
+    { t: 98.901, src: "part1-2/4-8.png" },
+    { t: 101.323, src: "part1-2/4-9.png" },
+    { t: 102.513, src: "part1-2/4-10.png" },
+    { t: 103.701, src: "part1-2/4-11.png" },
+    { t: 104.271, src: "part1-2/4-12.png" },
+    { t: 104.881, src: "part1-2/4-13.png" },
 ];
 const sources=images.map(i=>i.src).filter(Boolean);
 const preloaded=[];
