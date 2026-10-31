@@ -1,7 +1,6 @@
 let audio=document.getElementById("tea-party-audio");
 let player=document.getElementById("player");
 let input=document.getElementById("time-jump");
-
 const images=[
     { t: 0,    src: "part1/1-1.png" },
     { t: 2.954,  src: "part1/1-2.png" },
@@ -46,15 +45,19 @@ const images=[
     { t: 104.271, src: "part1-2/4-12.png" },
     { t: 104.881, src: "part1-2/4-13.png" },
 ];
-const sources=images.map(i=>i.src).filter(Boolean);
-const preloaded=[];
-const ready=Promise.all(
-    sources.map(src=>{
+const imgFamily=images.map(s=>{
+        if(s.src==""){
+            return null;
+        }
         const img=new Image();
-        img.src=src;
-        preloaded.push(img);
-        return img.decode().catch(()=>{});
+        player.appendChild(img);
+        img.src=s.src;
+        img.id=s.t;
+        img.classList.add("hid");
+        return img;
     })
+const ready=Promise.all(
+    imgFamily.filter(Boolean).map(img=>img.decode())
 );
 audio.style.visibility="hidden";
 ready.then(()=>{
@@ -132,12 +135,16 @@ function render(){
         }
     }
     if(idx!==shownIndex){
+        if(imgFamily[shownIndex]!=null){
+            imgFamily[shownIndex].classList.add("hid");
+        }
         shownIndex=idx;
         let src="";
         if(idx>=0){
-            src=images[idx].src;
+            if(imgFamily[idx]!=null){
+            imgFamily[idx].classList.remove("hid");
         }
-        player.style.backgroundImage=src?`url(${src})`:"none";
+        }
     }
 
     anm.forEach((a,i)=>{

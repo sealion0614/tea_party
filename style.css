@@ -2,8 +2,12 @@
     position:relative;
     width:80vw;
     aspect-ratio: 4/3;
-    background-size: contain;
-    background-repeat:no-repeat;
+}
+.play img{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit: contain;
 }
 .board{
     position: relative;
@@ -13,5 +17,5 @@
     overflow: hidden;
 }
 .hid{
-    display:none !important;
+    opacity:0 !important;
 }

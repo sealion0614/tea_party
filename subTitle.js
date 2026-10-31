@@ -73,8 +73,8 @@ createSubTitle(38.330,38.948,`ずっと`,{
     color:"black"
 });
 createSubTitle(38.948,41.281,`ウィリアムとジョセフが創りあげた`,regular);
-createSubTitle(41.281,43.743,`名作が`,regular);
-createSubTitle(43.743,48.204,`頭の中エンドレスループ再生`,regular);
+createSubTitle(41.281,43.2,`名作が`,regular);
+createSubTitle(43.2,48.204,`頭の中エンドレスループ再生`,regular);
 createSubTitle(48.204,48.494,`おや`,{
     fontSize:"10cqw",
     fontWeight:"bolder",
