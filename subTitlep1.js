@@ -242,7 +242,7 @@ createSubTitle(81.513,82.6,`頭撫でられた`,{
 });
 createSubTitle(82.6,85.765,`とある一家の<br>御茶会議`,{
     opacity:"0.5",
-    fontSize:"10cqw",
+    fontSize:"8cqw",
     fontWeight:"bolder",
     top:"60%",
     left:"5%",
