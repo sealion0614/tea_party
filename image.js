@@ -1,6 +1,7 @@
 let audio=document.getElementById("tea-party-audio");
 let player=document.getElementById("player");
 let input=document.getElementById("time-jump");
+let loading=document.getElementById("loading");
 const images=[
     { t: 0,    src: "part1/1-1.png" },
     { t: 2.954,  src: "part1/1-2.png" },
@@ -61,50 +62,9 @@ const ready=Promise.all(
 );
 audio.style.visibility="hidden";
 ready.then(()=>{
+    loading.style.display="none";
     audio.style.visibility="visible";
 });
-const effects=[
-    {
-        start:34.072,duration:37.965-34.072,hold:false,
-        keyframes:[
-            {transform:"translate(0,0) scale(1,1)",easing:"ease"},
-            {transform:"translate(-30%,0) scale(2,2)",easing:"ease"}
-        ]
-    },
-    {
-        start:38.901,duration:42-38.901,hold:true,
-        keyframes:[
-            {transform:"scale(2,2)",easing:"ease"},
-            {transform:"scale(1,1)",easing:"ease"}
-        ]
-    },
-    {
-        start:67.744,duration:5,hold:true,
-        keyframes:[
-            {transform:"scale(1,1) translate(0,0)",easing:"ease"},
-            {transform:"scale(2,2) translate(20%,-20%)",easing:"ease"},
-            {transform:"scale(2,2) translate(-20%,10%)",easing:"ease"},
-            {transform:"scale(1,1) translate(0,0)",easing:"ease"},
-        ]
-    },
-    {
-        start:72.096,duration:0.5,hold:true,
-        keyframes:[
-            {transform:"rotate(0) scale(1,1)"},
-            {transform:"rotate(90deg) scale(3,3)"},
-            {transform:"rotate(180deg) scale(1,1)"},
-        ]
-    },
-    {
-        start:72.596,duration:77.301-72.596,hold:true,
-        keyframes:[
-            {transform:"rotate(180deg) scale(1,1) translate(0,0)",easing:"ease"},
-            {transform:"rotate(180deg) scale(3,3) translate(0,-20%)",easing:"ease"},
-            {transform:"rotate(180deg) scale(3,3) translate(-10%,-30%)",easing:"ease"},
-            {transform:"rotate(180deg) scale(1,1) translate(0,0)",easing:"ease"},
-        ]
-    },
-];
 effects.forEach(e=>{
     if(e.hold){
         const next=images.find(im=>im.t>e.start);
